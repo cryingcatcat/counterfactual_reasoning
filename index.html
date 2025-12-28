@@ -29,7 +29,7 @@
                         Source Context
                     </div>
                     <div class="value-small">Factual Story (T)</div>
-                    <div id="factual-story" class="value-medium" style="margin-top: 15px; font-style: italic;"></div>
+                    <div id="factual-story" class="value-medium" style="margin-top: 10px; font-style: italic; opacity: 0.85;"></div>
                 </div>
 
                 <div class="data-section">
@@ -46,22 +46,24 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 11h16M4 15h16M4 19h16"/></svg>
                         Formalism
                     </div>
-                    <div id="math-query" class="value-medium" style="color: var(--accent-orange);"></div>
+                    <div id="math-query" class="value-medium" style="color: var(--accent-orange); font-family: monospace; font-size: 0.85rem; line-height: 1.4;"></div>
                     <div class="value-small">PROBABILISTIC QUERY (M)</div>
                 </div>
             </div>
 
             <!-- Center Column: Structure -->
             <div class="column center-column">
-                <div class="label" style="justify-content: center; margin-bottom: 20px;">
+                <div class="label" style="border: none;">
                     Causal Structure (G)
                 </div>
                 <div class="central-viz">
-                    <div id="mermaid-container" style="width: 100%;"></div>
+                    <div id="mermaid-container" style="width: 100%; display: flex; justify-content: center;"></div>
                 </div>
-                <div style="margin-top: auto; padding-top: 20px; text-align: center;">
-                    <div class="value-small">Graph Specification</div>
-                    <code id="raw-graph-text" style="font-size: 0.6rem; opacity: 0.5; word-break: break-all;"></code>
+                <div style="margin-top: auto; padding-top: 20px; text-align: center; width: 100%;">
+                    <div class="value-small" style="margin-bottom: 8px;">Graph Specification</div>
+                    <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 4px;">
+                        <code id="raw-graph-text" style="font-size: 0.6rem; opacity: 0.6; word-break: break-all; font-family: monospace;"></code>
+                    </div>
                 </div>
             </div>
 
@@ -72,7 +74,7 @@
                         Counterfactual Query
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </div>
-                    <div id="cf-question" class="value-medium" style="font-weight: 700;"></div>
+                    <div id="cf-question" class="value-medium" style="font-weight: 700; color: var(--text-main);"></div>
                     <div class="value-small">PROPOSED CHANGE (Q)</div>
                 </div>
 
@@ -81,9 +83,9 @@
                         Model Output
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                     </div>
-                    <div id="response-s" class="value-medium" style="color: var(--accent-blue); margin-bottom: 20px;"></div>
-                    <div id="response-s-prime" class="value-medium" style="color: var(--accent-orange); border-top: 1px solid var(--border-color); pt-10"></div>
-                    <div class="value-small">SIMULATED RESULTS (S / S')</div>
+                    <div id="response-s" class="value-medium" style="color: var(--accent-blue); margin-bottom: 24px;"></div>
+                    <div id="response-s-prime" class="value-medium" style="color: var(--accent-orange); border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 15px;"></div>
+                    <div class="value-small" style="margin-top: 10px;">SIMULATED RESULTS (S / S')</div>
                 </div>
             </div>
 

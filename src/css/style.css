@@ -61,57 +61,63 @@ header {
 /* Main Comparison Grid */
 .main-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1.5fr 1.2fr 1.5fr;
+    gap: 30px;
+    align-items: start;
 }
 
 .column {
     display: flex;
-    flex-content: column;
+    flex-direction: column;
+    min-width: 0; /* Prevent overflow */
 }
 
 /* Data Block Styling */
 .data-section {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .label {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     color: var(--text-muted);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 4px;
 }
 
 .label svg {
-    width: 14px;
-    height: 14px;
-    opacity: 0.6;
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
 }
 
 .value-large {
-    font-size: 2.5rem;
-    font-weight: 400;
-    line-height: 1;
-    margin: 10px 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 8px 0;
+    letter-spacing: -0.02em;
 }
 
 .value-medium {
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 1.4;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
     color: var(--text-main);
 }
 
 .value-small {
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.7rem;
+    font-weight: 600;
     color: var(--text-muted);
     text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 /* Central Diagram */
@@ -121,16 +127,19 @@ header {
     align-items: center;
     border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
-    padding: 0 40px;
+    padding: 0 30px;
+    min-height: 500px;
 }
 
 .central-viz {
     width: 100%;
-    min-height: 400px;
+    flex-grow: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: transparent;
+    padding: 20px 0;
 }
 
 /* Selector Panel */
