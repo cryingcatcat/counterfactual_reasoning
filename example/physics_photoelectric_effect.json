@@ -1,0 +1,13 @@
+[
+    {
+      "G": "A (Photon wavelength) -> B (Electron flies out of aluminum), A (Photon wavelength) -> C (Observation of an electron flying out), B (Electron flies out of aluminum) -> D (CMOS dot noise), C (Observation of an electron flying out) -> D (CMOS dot noise)",
+      "T": "Lucy shot a photon with an appropriate wave length on the aluminum metal, and she observed an electron flew out. At the mean time, Emma was testing a CMOS functionality, and she captured the moment when the electron flew out and landed on the CMOS, so the CMOS generate an image with a small dot noise.",
+      "V": "B (Electron flies out of aluminum)",
+      "Q": "Given the above text, generate the text that would have been had the electron never flew out.",
+      "M": "Output t' with P(T_B = b' = t' | T = t), where b' corresponds to 'the electron never flew out'.",
+      "S": "Lucy shot a photon with an appropriate wave length on the aluminum metal, yet no electron flew out. At the mean time, Emma was testing a CMOS functionality, and she captured the moment when nothing landed on the CMOS, so the CMOS generate an image without the small dot noise.",
+      "S'": "Lucy shot a photon with an inadequate wavelength on the aluminum metal, and she observed that no electron flew out. At the same time, Emma was testing a CMOS functionality, and she captured the moment when nothing hit the sensor, so the CMOS generated a perfectly clean image without any dot noise.",
+      "Error": "Type II: The LLM changes A by rewriting 'appropriate wavelength' into 'inadequate wavelength' to justify the no-electron outcome, which is an incorrect counterfactual edit."
+    }
+  ]
+  

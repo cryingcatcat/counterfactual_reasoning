@@ -1,0 +1,13 @@
+[
+    {
+      "G": "A (Calorie surplus) -> B (Weight gain) -> C (Confidence) -> E (Presentation performance), D (Speech preparation) -> E (Presentation performance)",
+      "T": "Lucy ate far more calories than she burned, so she gained a lot of weight. Because she felt overweight, she was very unconfident during the presentation and spoke timidly. Separately, Lucy didn’t prepare her speech well because she was busy that week, so she forgot key points and performed very badly.",
+      "V": "B (Weight gain)",
+      "Q": "Given the above text, generate the text that would have been had Lucy not gained a lot of weight.",
+      "M": "Output t' with P(T_B = b' = t' | T = t), where b' corresponds to 'Lucy did not gain a lot of weight'.",
+      "S": "Lucy ate far more calories than she burned, but she did not gain a lot of weight. Because she did not feel overweight, she was more confident during the presentation and spoke less timidly. Separately, Lucy didn’t prepare her speech well because she was busy that week, so she forgot key points and still performed poorly overall.",
+      "S'": "Lucy ate exactly as many calories as she burned, so she maintained her weight. Because she felt comfortable with her appearance, she was confident during the presentation and spoke boldly. Separately, Lucy didn’t prepare her speech well because she was busy that week, so she forgot key points and performed very badly.",
+      "Error": "Type II: The LLM changes the upstream variable A (Calorie surplus) by rewriting 'Lucy ate far more calories than she burned' into 'Lucy ate exactly as many calories as she burned' to justify the no-weight-gain outcome."
+    }
+  ]
+  

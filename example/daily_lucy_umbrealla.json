@@ -1,0 +1,13 @@
+[
+    {
+      "G": "B (Carried an umbrella?) <- A (Weather) -> C (Street wetness), B (Carried an umbrella?) -> D (Umbrella stolen?) -> E (Lucy's mood)",
+      "T": "It was raining in the morning, so Lucy carried an umbrella to work. The street was wet. After Lucy arrived at work, her umbrella was stolen, so she felt depressed.",
+      "V": "B (Lucy carried an umbrella)",
+      "Q": "Given the above text, generate the text that would have been had Lucy not carried an umbrella.",
+      "M": "Output t' with P(T_B = b' = t' | T = t), where b' corresponds to 'Lucy did not carry an umbrella'.",
+      "S": "It was raining in the morning, so Lucy did not carry an umbrella to work. The street was wet. After Lucy arrived at work, her umbrella was not stolen, so she did not feel depressed about the theft.",
+      "S'": "It was raining in the morning, so Lucy did not carry an umbrella to work. The street was wet. After Lucy arrived at work, her clothes were soaked, so she felt depressed.",
+      "Error": "Type III (Correlation Effect): The LLM substitutes a different causal explanation (soaked clothes) to keep Lucy depressed, and it introduces a new mechanism not present in the causal diagram/story variables, rather than performing the counterfactual edit implied by the given causal structure."
+    }
+  ]
+  
