@@ -3,111 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Causal Contrast Dashboard</title>
+    <title>Causal Inference Analysis Report</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
     <div class="dashboard">
         <header>
-            <div class="logo">Causal Contrast</div>
-            <div class="unit-toggle">
-                <span class="active">[ STRUCTURAL ]</span>
-                <span>[ PROBABILISTIC ]</span>
-            </div>
+            <h1>Causal Analysis</h1>
         </header>
 
-        <div class="main-grid" id="report-content">
-            <!-- Left Column: Factual -->
-            <div class="column">
-                <div class="data-section">
-                    <div class="label">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-                        Source Context
-                    </div>
-                    <div class="value-small">Factual Story (T)</div>
-                    <div id="factual-story" class="value-medium" style="margin-top: 10px; font-style: italic; opacity: 0.85;"></div>
-                </div>
-
-                <div class="data-section">
-                    <div class="label">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                        Intervention Variable
-                    </div>
-                    <div id="intervention-variable" class="value-large"></div>
-                    <div class="value-small">TARGET VARIABLE (V)</div>
-                </div>
-
-                <div class="data-section">
-                    <div class="label">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 11h16M4 15h16M4 19h16"/></svg>
-                        Formalism
-                    </div>
-                    <div id="math-query" class="value-medium" style="color: var(--accent-orange); font-family: monospace; font-size: 0.85rem; line-height: 1.4;"></div>
-                    <div class="value-small">PROBABILISTIC QUERY (M)</div>
-                </div>
+        <div style="text-align: center;">
+            <div class="instruction-tip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                Select a case study below to refresh the analysis
             </div>
-
-            <!-- Center Column: Structure -->
-            <div class="column center-column">
-                <div class="label" style="border: none;">
-                    Causal Structure (G)
-                </div>
-                <div class="central-viz">
-                    <div id="mermaid-container" style="width: 100%; display: flex; justify-content: center;"></div>
-                </div>
-                <div style="margin-top: auto; padding-top: 20px; text-align: center; width: 100%;">
-                    <div class="value-small" style="margin-bottom: 8px;">Graph Specification</div>
-                    <div style="background: rgba(0,0,0,0.03); padding: 10px; border-radius: 4px;">
-                        <code id="raw-graph-text" style="font-size: 0.6rem; opacity: 0.6; word-break: break-all; font-family: monospace;"></code>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Counterfactual -->
-            <div class="column">
-                <div class="data-section" style="text-align: right;">
-                    <div class="label" style="justify-content: flex-end;">
-                        Counterfactual Query
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    </div>
-                    <div id="cf-question" class="value-medium" style="font-weight: 700; color: var(--text-main);"></div>
-                    <div class="value-small">PROPOSED CHANGE (Q)</div>
-                </div>
-
-                <div class="data-section" style="text-align: right;">
-                    <div class="label" style="justify-content: flex-end;">
-                        Model Output
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    </div>
-                    <div id="response-s" class="value-medium" style="color: var(--accent-blue); margin-bottom: 24px;"></div>
-                    <div id="response-s-prime" class="value-medium" style="color: var(--accent-orange); border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: 15px;"></div>
-                    <div class="value-small" style="margin-top: 10px;">SIMULATED RESULTS (S / S')</div>
-                </div>
-            </div>
-
-            <!-- Bottom: Selector & Errors -->
-            <div class="selector-panel">
+            <div class="selector-wrapper">
+                <span class="selector-label">Case Study</span>
                 <select id="example-selector">
-                    <option value="sports_donk_vitality">RUSSIA VS CANADA STYLE: DONK V VITALITY</option>
-                    <option value="daily_delayed_train">DELAYED TRAIN ANALYSIS</option>
-                    <option value="daily_lucy_umbrealla">LUCY'S UMBRELLA PARADOX</option>
-                    <option value="health_lucy_gain_weights">WEIGHT GAIN MECHANISM</option>
-                    <option value="physics_photoelectric_effect">PHOTOELECTRIC EFFECT DATA</option>
+                    <option value="sports_donk_vitality">Donk vs Vitality (Sports)</option>
+                    <option value="daily_delayed_train">Delayed Train (Daily Life)</option>
+                    <option value="daily_lucy_umbrealla">Lucy's Umbrella (Logic Paradox)</option>
+                    <option value="health_lucy_gain_weights">Weight Gain (Health)</option>
+                    <option value="physics_photoelectric_effect">Photoelectric Effect (Physics)</option>
                 </select>
-            </div>
-
-            <div class="error-footer">
-                <div class="label" style="justify-content: center;">Diagnostic Evaluation</div>
-                <div id="error-description" class="value-medium" style="font-weight: 700; color: #d00;"></div>
             </div>
         </div>
 
-        <footer style="margin-top: 60px; text-align: center; font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;">
-            &copy; 2025 Causal Inference Research Archive • Data Visualization Module
+        <div class="main-grid" id="report-content">
+            
+            <!-- Section 1: Factual Context -->
+            <section class="data-section">
+                <div class="section-header">
+                    <div class="label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        Factual Narrative (T)
+                    </div>
+                </div>
+                <div class="section-body">
+                    <p id="factual-story" class="factual-text italic"></p>
+                </div>
+            </section>
+
+            <!-- Section 2: Causal Structure -->
+            <section class="data-section">
+                <div class="section-header">
+                    <div class="label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        Causal Structure (G)
+                    </div>
+                </div>
+                <div class="section-body" style="padding: 0; position: relative;">
+                    <div class="graph-interactive-container">
+                        <div class="mermaid-wrapper">
+                            <div id="mermaid-container"></div>
+                        </div>
+                        <div class="spec-action-area">
+                            <button id="view-spec-btn" class="spec-btn-pulse">View Specification</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Global Specification Modal -->
+            <div id="spec-modal" class="spec-modal-overlay">
+                <div class="spec-modal-content">
+                    <span class="spec-title">Formal Graph Specification</span>
+                    <code id="raw-graph-text"></code>
+                    <div style="margin-top: 30px; font-size: 0.65rem; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.1em;">Click anywhere to close</div>
+                </div>
+            </div>
+
+            <!-- Section 3: Intervention & Query -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px;">
+                <section class="data-section" style="margin-bottom: 0;">
+                    <div class="section-header">
+                        <div class="label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            Intervention (V)
+                        </div>
+                    </div>
+                    <div class="section-body">
+                        <div id="intervention-variable" style="font-weight: 600; font-size: 1.2rem; text-align: center; color: var(--gold-dark);"></div>
+                        <div style="margin-top: 30px;">
+                            <span style="font-size: 0.65rem; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; text-align: center;">Formalism (M)</span>
+                            <div id="math-query" class="math-query-box" style="text-align: center;"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="data-section" style="margin-bottom: 0;">
+                    <div class="section-header">
+                        <div class="label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Counterfactual Query (Q)
+                        </div>
+                    </div>
+                    <div class="section-body" style="display: flex; align-items: flex-start; justify-content: center; height: 100%;">
+                        <div id="cf-question" class="cf-query-text"></div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Section 4: Comparison -->
+            <section class="data-section">
+                <div class="section-header" style="justify-content: center;">
+                    <div class="label">Model Outputs Comparison</div>
+                </div>
+                <div class="section-body response-comparison">
+                    <div class="response-card">
+                        <div class="response-title">Expected Response S</div>
+                        <div id="response-s" style="font-size: 0.95rem; color: var(--text-main);"></div>
+                    </div>
+                    <div class="response-card">
+                        <div class="response-title">Actual Response S'</div>
+                        <div id="response-s-prime" style="font-size: 0.95rem; color: var(--text-main);"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Diagnostic -->
+            <section class="error-section">
+                <div class="error-title">Counterfactual Error</div>
+                <div id="error-description" style="font-weight: 600; color: #8e733e; font-size: 1.1rem; line-height: 1.6;"></div>
+            </section>
+
+        </div>
+
+        <footer>
+            Columbia Causal Inference 25
         </footer>
     </div>
 

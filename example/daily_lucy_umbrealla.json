@@ -7,7 +7,7 @@
       "M": "Output t' with P(T_B = b' = t' | T = t), where b' corresponds to 'Lucy did not carry an umbrella'.",
       "S": "It was raining in the morning, so Lucy did not carry an umbrella to work. The street was wet. After Lucy arrived at work, her umbrella was not stolen, so she did not feel depressed about the theft.",
       "S'": "It was raining in the morning, so Lucy did not carry an umbrella to work. The street was wet. After Lucy arrived at work, her clothes were soaked, so she felt depressed.",
-      "Error": "Type III (Correlation Effect): The LLM substitutes a different causal explanation (soaked clothes) to keep Lucy depressed, and it introduces a new mechanism not present in the causal diagram/story variables, rather than performing the counterfactual edit implied by the given causal structure."
+      "Error": "Type III: The LLM substitutes a different causal explanation (soaked clothes) to keep Lucy depressed, and it introduces a new mechanism not present in the causal diagram variables, rather than performing the counterfactual edit implied by the given causal structure."
     }
   ]
   
