@@ -1,0 +1,38 @@
+[
+    {
+      "id": 22,
+      "variable_mapping": {
+        "A": "stayed_up_late_studying",
+        "B": "skipped_pregame_shootaround",
+        "C": "fatigue",
+        "D": "shooting_accuracy",
+        "E": "rim_adjustment",
+        "F": "early_open_jumper_results",
+        "G": "confidence",
+        "H": "playing_cautiously"
+      },
+      "edge_pairs": [
+        ["A", "C"],
+        ["C", "D"],
+        ["B", "E"],
+        ["E", "F"],
+        ["D", "G"],
+        ["F", "G"],
+        ["G", "H"]
+      ],
+      "bidirected_pairs": [
+        ["A", "B"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "Lucy stayed up late studying, and at the same time she skipped the team’s pregame shootaround; both were driven by the same midterm exam week. Because she stayed up late, Lucy felt tired and her shooting accuracy dropped. Because she skipped shootaround, she didn’t adjust to the rim and missed a few open jumpers early. With lower accuracy and early misses, Lucy’s confidence dipped and she played more cautiously for the rest of the half.",
+      "V": "B",
+      "Q": "Given the above text, generate the text that would have been had Lucy not skipped the pregame shootaround. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(B = b') = t' | T = t)",
+      "S": "Lucy stayed up late studying, and at the same time she attended the team’s pregame shootaround; both were driven by the same midterm exam week. Because she stayed up late, Lucy felt tired and her shooting accuracy dropped. Because she attended shootaround, she adjusted to the rim and hit a few open jumpers early. With lower accuracy but some early success, Lucy’s confidence dipped less and she played closer to her usual pace for the rest of the half.",
+      "S_prime": "Lucy stayed up late studying, and at the same time she attended the team’s pregame shootaround; however, these were influenced by different priorities during midterm exam week. Because she stayed up late, Lucy felt tired and her shooting accuracy dropped. Because she attended shootaround, she adjusted to the rim and hit a few open jumpers early. With lower accuracy but steady early success, Lucy’s confidence remained stable and she played at her usual pace for the rest of the half.",
+      "error_type": "II",
+      "comment": "Type II: The LLM changes the bidirected relation (A <---> B) by rewriting 'both were driven by the same midterm exam week' into 'influenced by different priorities', even though the intervention is only on B.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

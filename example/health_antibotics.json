@@ -1,0 +1,39 @@
+[
+    {
+      "id": 9,
+      "variable_mapping": {
+        "A": "antibiotic_started",
+        "B": "water_intake_low",
+        "C": "stomach_infection",
+        "D": "antibiotic_stomach_irritation",
+        "E": "nausea",
+        "F": "ate_less_at_lunch",
+        "G": "dizziness",
+        "H": "left_work_early",
+        "I": "skipped_evening_workout"
+      },
+      "edge_pairs": [
+        ["A", "D"],
+        ["D", "E"],
+        ["E", "F"],
+        ["B", "G"],
+        ["E", "H"],
+        ["G", "H"],
+        ["H", "I"]
+      ],
+      "bidirected_pairs": [
+        ["A", "B"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "Lucy started a new antibiotic, and at the same time she was drinking less water; both were driven by the same underlying stomach infection. Because the antibiotic irritated her stomach, Lucy felt nauseous and ate less at lunch. Separately, because she drank less water, she felt dizzy in the afternoon. With both nausea and dizziness, Lucy left work early and skipped her evening workout.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had Lucy not started the new antibiotic. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(A = a') = t' | T = t)",
+      "S": "Lucy did not start a new antibiotic, and at the same time she was drinking less water; both were driven by the same underlying stomach infection. Because she did not take the antibiotic, her stomach was not irritated by medication, so she was less nauseous and ate more at lunch. Separately, because she drank less water, she still felt dizzy in the afternoon. With dizziness but less nausea, Lucy still left work early and skipped her evening workout.",
+      "S_prime": "Lucy delayed starting a new antibiotic, and at the same time she was drinking less water; both were driven by the same underlying stomach infection. Because the infection persisted without treatment, Lucy felt continued abdominal pain and ate less at lunch. Separately, because she drank less water, she felt dizzy in the afternoon. With both pain and dizziness, Lucy left work early and skipped her evening workout.",
+      "error_type": "III",
+      "comment": "Type III: The LLM replaces the specified antibiotic downstream mechanism (A -> D -> E) with a new one ('infection persisted without treatment' causing abdominal pain) to keep the negative outcome, introducing an irrelevant mechanism not represented in the causal structure.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

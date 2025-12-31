@@ -1,13 +1,35 @@
 [
-    {
-      "G": "A (Snowstorm severity) -> B (Road accidents), A (Snowstorm severity) -> C (Subway delay), B (Road accidents) -> D (Arrival time), C (Subway delay) -> D (Arrival time), F (Alarm battery dies) -> D (Arrival time), D (Arrival time) -> G (Redbull to stay sharp), D (Arrival time) -> E (Client's impression), G (Coffee to stay sharp) -> E (Client's impression)",
-      "T": "A snowstorm hit the city, causing several road accidents and a subway delay. Jamie’s alarm battery died, so he left home an hour late. Because of the accidents and the delayed subway, his commute ran long and he arrived late to the client presentation. He grabbed a strong coffee to stay sharp, but the client still thought he was unprepared.",
-      "V": "C (Subway delay)",
-      "Q": "Given the above text, generate the text that would have been had the subway not been delayed.",
-      "M": "Output t' with P(T_C = c' = t' | T = t), where c' corresponds to 'the subway was not delayed (on time)'.",
-      "S": "A snowstorm hit the city, causing several road accidents, but the subway was not delayed. Jamie’s alarm battery died, so he left home an hour late. Even with the subway running on time, the accidents and his late departure meant he still arrived late to the client presentation. He drank a redbull to stay sharp, but the client still thought he was unprepared.",
-      "S'": "A snowstorm hit the city, causing several road accidents, but the subway was not delayed. Jamie’s alarm battery worked perfectly, so he left home right on schedule. With the subway running on time, the accidents did not affect him and his timely departure meant he arrived early to the client presentation. He didn't need a redbull to stay sharp, and the client thought he was highly prepared.",
-      "Error": "Type II: The LLM changes F (Alarm battery dies) to justify the no-delay outcome, which is an incorrect counterfactual edit since alarm battery is not affected by the subway delay."
-    }
-  ]
-  
+  {
+    "id": 1,
+    "variable_mapping": {
+      "A": "snowstorm_severity",
+      "B": "road_accidents",
+      "C": "subway_delay",
+      "D": "arrival_time",
+      "E": "client_impression",
+      "F": "alarm_battery_dies",
+      "G": "energy_drink_redbull"
+    },
+    "edge_pairs": [
+      ["A", "B"],
+      ["A", "C"],
+      ["B", "D"],
+      ["C", "D"],
+      ["F", "D"],
+      ["D", "G"],
+      ["D", "E"],
+      ["G", "E"]
+    ],
+    "bidirected_pairs": [],
+    "causal_graph_type": "custom",
+    "T": "A snowstorm hit the city, causing several road accidents and a subway delay. Jamie’s alarm battery died, so he left home an hour late. Because of the accidents and the delayed subway, his commute ran long and he arrived late to the client presentation. He drank a Redbull to stay sharp, but the client still thought he was unprepared.",
+    "V": "C",
+    "Q": "Given the above text, generate the text that would have been had the subway not been delayed.",
+    "M": "Output t' with P(T_(C = c') = t' | T = t)",
+    "S": "A snowstorm hit the city, causing several road accidents, but the subway was not delayed. Jamie’s alarm battery died, so he left home an hour late. Even with the subway running on time, the accidents and his late departure meant he still arrived late to the client presentation. He drank a Redbull to stay sharp, but the client still thought he was unprepared.",
+    "S_prime": "A snowstorm hit the city, causing several road accidents, but the subway was not delayed. Jamie’s alarm battery worked perfectly, so he left home right on schedule. With the subway running on time, the accidents did not affect him and his timely departure meant he arrived early to the client presentation. He didn't need a Redbull to stay sharp, and the client thought he was highly prepared.",
+    "error_type": "III",
+    "comment": "Type III: The LLM changes F by rewriting 'alarm battery died' into 'alarm battery worked perfectly' even though the intervention is only on C (subway delay).",
+    "model": ["gemini-3-fast"]
+  }
+]

@@ -1,0 +1,152 @@
+[
+    {
+        "id": "daily_delayed_train",
+        "filename": "daily_delayed_train.json",
+        "type": "daily",
+        "name": "Delayed Train"
+    },
+    {
+        "id": "daily_lucy_umbrealla",
+        "filename": "daily_lucy_umbrealla.json",
+        "type": "daily",
+        "name": "Lucy Umbrealla"
+    },
+    {
+        "id": "daily_pasta_cooking",
+        "filename": "daily_pasta_cooking.json",
+        "type": "daily",
+        "name": "Pasta Cooking"
+    },
+    {
+        "id": "daily_printer",
+        "filename": "daily_printer.json",
+        "type": "daily",
+        "name": "Printer"
+    },
+    {
+        "id": "ecnomics_interest_rate",
+        "filename": "ecnomics_interest_rate.json",
+        "type": "ecnomics",
+        "name": "Interest Rate"
+    },
+    {
+        "id": "ecnomics_public_policy",
+        "filename": "ecnomics_public_policy.json",
+        "type": "ecnomics",
+        "name": "Public Policy"
+    },
+    {
+        "id": "ecnomics_supply",
+        "filename": "ecnomics_supply.json",
+        "type": "ecnomics",
+        "name": "Supply"
+    },
+    {
+        "id": "ecnomics_tourism_increase",
+        "filename": "ecnomics_tourism_increase.json",
+        "type": "ecnomics",
+        "name": "Tourism Increase"
+    },
+    {
+        "id": "health_antibotics",
+        "filename": "health_antibotics.json",
+        "type": "health",
+        "name": "Antibotics"
+    },
+    {
+        "id": "health_coffe_sleep",
+        "filename": "health_coffe_sleep.json",
+        "type": "health",
+        "name": "Coffe Sleep"
+    },
+    {
+        "id": "health_first_aid",
+        "filename": "health_first_aid.json",
+        "type": "health",
+        "name": "First Aid"
+    },
+    {
+        "id": "health_lucy_gain_weights",
+        "filename": "health_lucy_gain_weights.json",
+        "type": "health",
+        "name": "Lucy Gain Weights"
+    },
+    {
+        "id": "physics_electrostatics",
+        "filename": "physics_electrostatics.json",
+        "type": "physics",
+        "name": "Electrostatics"
+    },
+    {
+        "id": "physics_energy",
+        "filename": "physics_energy.json",
+        "type": "physics",
+        "name": "Energy"
+    },
+    {
+        "id": "physics_photoelectric_effect",
+        "filename": "physics_photoelectric_effect.json",
+        "type": "physics",
+        "name": "Photoelectric Effect"
+    },
+    {
+        "id": "physics_ramp",
+        "filename": "physics_ramp.json",
+        "type": "physics",
+        "name": "Ramp"
+    },
+    {
+        "id": "physics_thermal_dynamics",
+        "filename": "physics_thermal_dynamics.json",
+        "type": "physics",
+        "name": "Thermal Dynamics"
+    },
+    {
+        "id": "social_arrival_time",
+        "filename": "social_arrival_time.json",
+        "type": "social",
+        "name": "Arrival Time"
+    },
+    {
+        "id": "social_community_campaign",
+        "filename": "social_community_campaign.json",
+        "type": "social",
+        "name": "Community Campaign"
+    },
+    {
+        "id": "social_party_music",
+        "filename": "social_party_music.json",
+        "type": "social",
+        "name": "Party Music"
+    },
+    {
+        "id": "social_spreading_rumors",
+        "filename": "social_spreading_rumors.json",
+        "type": "social",
+        "name": "Spreading Rumors"
+    },
+    {
+        "id": "sports_basketball",
+        "filename": "sports_basketball.json",
+        "type": "sports",
+        "name": "Basketball"
+    },
+    {
+        "id": "sports_donk_vitality",
+        "filename": "sports_donk_vitality.json",
+        "type": "sports",
+        "name": "Donk Vitality"
+    },
+    {
+        "id": "sports_dota2_travel",
+        "filename": "sports_dota2_travel.json",
+        "type": "sports",
+        "name": "Dota2 Travel"
+    },
+    {
+        "id": "sports_sleeping_well",
+        "filename": "sports_sleeping_well.json",
+        "type": "sports",
+        "name": "Sleeping Well"
+    }
+]

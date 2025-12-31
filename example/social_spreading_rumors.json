@@ -1,0 +1,32 @@
+[
+  {
+    "id": 21,
+    "variable_mapping": {
+      "A": "brand_spreads_rumor",
+      "B": "lucy_trust_in_brand",
+      "C": "lucy_asks_for_clarification",
+      "D": "conflict_intensity",
+      "E": "group_chat_tone",
+      "F": "friendship_outcome"
+    },
+    "edge_pairs": [
+      ["A", "B"],
+      ["B", "C"],
+      ["A", "E"],
+      ["C", "D"],
+      ["E", "D"],
+      ["D", "F"]
+    ],
+    "bidirected_pairs": [],
+    "causal_graph_type": "custom",
+    "T": "Brand repeated and replied a rumor about Lucy in the group chat, so Lucy’s trust in him dropped. Because she no longer trusted him, Lucy didn’t ask him to clarify and instead stayed silent. The group chat turned tense, the misunderstanding escalated into a bigger conflict, and their friendship cooled off after that.",
+    "V": "C",
+    "Q": "Given the above text, generate the text that would have been had Lucy asked Brand to clarify the rumor right away. Keep the same format and roughly the same length.",
+    "M": "Output t' with P(T_(C = c') = t' | T = t)",
+    "S": "Brand repeated and replied a rumor about Lucy in the group chat, so Lucy’s trust in him dropped. Even though she no longer trusted him, Lucy asked him to clarify right away instead of staying silent. The group chat was still tense, but the misunderstanding was contained, the conflict was less intense, and their friendship was strained but not fully cooled off after that.",
+    "S_prime": "Brand repeated and replied a rumor about Lucy in the group chat, so Lucy’s trust in him wavered. Because she wanted to address it, Lucy asked him to clarify right away instead of staying silent. The group chat avoided the tension, the misunderstanding was quickly resolved, and their friendship was preserved after that.",
+    "error_type": "I",
+    "comment": "Type I and III: The LLM changes C as requested but wrongly combined and modified chat_tone and conflict_intensity, and removes the downstream effect of A on E, missing required downstream changes implied by A -> E and E -> D.",
+    "model": ["gemini-3-fast"]
+  }
+]

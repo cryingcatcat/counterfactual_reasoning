@@ -1,13 +1,26 @@
 [
-    {
-      "G": "A (practice) -> B (confidence) -> C (performance), A (practice) -> C (performance)",
-      "T": "DONK practiced his aim for the Counter Strike Budapest Major grand final against Team Vitality. His teammate Shiro saw his effort and felt confident about the grand final, so he played decisively and took key fights. Donk and Shiro performed well and eventually 3:0 Team Vitality.",
-      "V": "B (Shiro's confidence about the grand final)",
-      "Q": "Given the above text, generate the text that would have been had Shiro felt unconfident about the grand final. Keep the same format and the same length of the story.",
-      "M": "Output t' with P(T_B = b' = t' | T = t, where b' corresponds to 'Shiro felt unconfident'.)",
-      "S": "DONK practiced his aim for the Counter Strike Budapest Major grand final against Team Vitality. His teammate Shiro saw his effort and felt unconfident about the grand final, so he played defensively and avoided key fights. Donk and Shiro performed poorly and eventually 0:3 Team Vitality.",
-      "S'": "DONK practiced his aim for the Counter Strike Budapest Major grand final against Team Vitality. His teammate Shiro saw his effort and felt anxious about the grand final, fearing that Donk was overworking himself and that their momentum would stall against such a titan. Donk and Shiro performed well and eventually 3:0 Team Vitality.",
-      "Error": "Type I: The LLM changes B (confident -> unconfident) but leaves C unchanged ('performed well' and '3:0'), missing the downstream consequence required by the causal structure encoded in the story."
-    }
-  ]
-  
+  {
+    "id": 23,
+    "variable_mapping": {
+      "A": "donk_practice",
+      "B": "shiro_confidence",
+      "C": "team_performance_result"
+    },
+    "edge_pairs": [
+      ["A", "B"],
+      ["B", "C"],
+      ["A", "C"]
+    ],
+    "bidirected_pairs": [],
+    "causal_graph_type": "mediator",
+    "T": "DONK practiced his aim for the Counter Strike Budapest Major grand final against Team Vitality. His teammate Shiro saw his effort and felt confident about the grand final, so he played decisively and took key fights. Donk and Shiro performed well and eventually 3:0 Team Vitality.",
+    "V": "B",
+    "Q": "Given the above text, generate the text that would have been had Shiro felt unconfident about the grand final. Keep the same format and the same length of the story.",
+    "M": "Output t' with P(T_(B = b') = t' | T = t)",
+    "S": "DONK practiced his aim for the Counter Strike Budapest Major grand final against Team Vitality. His teammate Shiro saw his effort and felt unconfident about the grand final, so he played defensively and avoided key fights. Donk and Shiro performed poorly and eventually 0:3 Team Vitality.",
+    "S_prime": "DONK practiced his aim for the Counter Strike Budapest Major grand final against Team Vitality. His teammate Shiro saw his effort and felt anxious about the grand final, fearing that Donk was overworking himself and that their momentum would stall against such a titan. Donk and Shiro performed well and eventually 3:0 Team Vitality.",
+    "error_type": "I",
+    "comment": "Type I: The LLM changes B (confident -> anxious/unconfident) but leaves C unchanged ('performed well' and '3:0'), missing the downstream consequence required by the causal structure.",
+    "model": ["gemini-3-fast"]
+  }
+]

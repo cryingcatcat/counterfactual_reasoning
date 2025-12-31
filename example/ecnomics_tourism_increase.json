@@ -1,0 +1,36 @@
+[
+    {
+      "id": 8,
+      "variable_mapping": {
+        "A": "tourism_boom",
+        "B": "restaurant_demand",
+        "C": "menu_prices",
+        "D": "job_market_tightness",
+        "E": "wages",
+        "F": "delivery_costs",
+        "G": "takeout_ordering_rate"
+      },
+      "edge_pairs": [
+        ["A", "B"],
+        ["B", "C"],
+        ["D", "E"],
+        ["E", "F"],
+        ["C", "G"],
+        ["F", "G"]
+      ],
+      "bidirected_pairs": [
+        ["A", "D"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "In Lucy’s city, a tourism boom happened, and at the same time the local job market tightened; both were driven by the same underlying economic upswing. Because of the tourism boom, restaurant demand increased and menu prices rose. Because the job market tightened, wages increased and delivery costs went up. With both menu prices and delivery costs higher, many residents ordered takeout less often that month.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had there been no tourism boom. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(A = a') = t' | T = t)",
+      "S": "In Lucy’s city, there was no tourism boom, but the local job market still tightened due to the same underlying economic upswing. Because there was no tourism boom, restaurant demand did not increase and menu prices stayed flat. Because the job market tightened, wages increased and delivery costs went up. With delivery costs higher, many residents ordered takeout less often that month.",
+      "S_prime": "In Lucy’s city, a tourism slump happened, and at the same time the local job market tightened; however, these were driven by different economic factors. Because of the tourism slump, restaurant demand decreased and menu prices stayed flat. Because the job market tightened, wages increased and delivery costs went up. With lower menu prices offset by delivery costs being higher, many residents ordered takeout at about the same rate that month.",
+      "error_type": "II",
+      "comment": "Type II: The LLM changes the bidirected relation (A <---> D) by rewriting 'both were driven by the same underlying economic upswing' into 'driven by different economic factors', even though the intervention is only on A.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

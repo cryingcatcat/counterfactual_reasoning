@@ -1,0 +1,34 @@
+name: Update Manifest on File Change
+
+on:
+  push:
+    paths:
+      - 'example/**'  # 只有当 example 文件夹下的文件变化时才触发
+  workflow_dispatch:   # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Update manifest
+        run: |
+          # 运行脚本生成新的 manifest.json，--no-serve 确保它运行完就退出
+          python generate_reports.py --no-serve
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/manifest.json
+          # 只有在文件确实有变化时才提交
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-update manifest.json"
+          git push

@@ -169,24 +169,74 @@ header {
 .graph-interactive-container {
     position: relative;
     width: 100%;
+    height: 450px; /* Fixed height for the viewport */
     overflow: hidden;
     background: #fdfdfc;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.zoom-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    z-index: 20;
+}
+
+.zoom-controls button {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 1px solid var(--border-color);
+    color: var(--gold-dark);
+    display: flex;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.zoom-controls button:hover {
+    border-color: var(--gold-primary);
+    background: var(--gold-muted);
+    color: var(--gold-primary);
+    transform: translateY(-2px);
+}
+
+.zoom-controls button:active {
+    transform: translateY(0);
 }
 
 .mermaid-wrapper {
     width: 100%;
-    overflow-x: auto;
-    padding: 60px 0 100px 0; /* Extra bottom padding for button */
+    height: 100%;
+    overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+.mermaid-wrapper:active {
+    cursor: grabbing;
+}
+
+#mermaid-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #mermaid-container svg {
-    max-width: none !important;
-    height: auto !important;
+    display: block;
+    transform-origin: center;
+    overflow: visible;
 }
 
 /* Specification Button & Animation */

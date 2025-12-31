@@ -1,0 +1,34 @@
+[
+    {
+      "id": 3,
+      "variable_mapping": {
+        "A": "flame_level",
+        "B": "sauce_saltiness",
+        "C": "water_boilover",
+        "D": "pasta_texture",
+        "E": "dish_saltiness",
+        "F": "guest_food_intake"
+      },
+      "edge_pairs": [
+        ["A", "C"],
+        ["C", "D"],
+        ["B", "E"],
+        ["D", "F"],
+        ["E", "F"]
+      ],
+      "bidirected_pairs": [
+        ["A", "B"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "Lucy cooked pasta on a high flame, and at the same time she used a very salty sauce; both were driven by the same rush to finish dinner quickly. Because the flame was high, the water boiled over and the pasta became slightly overcooked. Because the sauce was very salty, the dish tasted too salty. Since the pasta was overcooked and the dish was too salty, Lucy’s guest ate only a few bites and stopped.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had Lucy not cooked on a high flame. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(A = a') = t' | T = t)",
+      "S": "Lucy cooked pasta on a low flame, and at the same time she used a very salty sauce; both were driven by the same rush to finish dinner quickly. Because the flame was low, the water never boiled over and the pasta became perfectly al dente. Because the sauce was very salty, the dish still tasted too salty. Since the pasta was well-cooked but the dish was still too salty, Lucy’s guest ate more of the meal but eventually stopped.",
+      "S_prime": "Lucy cooked pasta on a low flame, and at the same time she used a lightly salted sauce; both were driven by the same rush to finish dinner quickly. Because the flame was low, the water never boiled over and the pasta became perfectly al dente. Because the sauce was lightly salted, the dish tasted well balanced. Since the pasta was well-cooked and the dish tasted great, Lucy’s guest finished the meal.",
+      "error_type": "II",
+      "comment": "Type II: The LLM changes B by rewriting 'very salty sauce' into 'lightly salted sauce' even though the intervention is only on A (flame level).",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

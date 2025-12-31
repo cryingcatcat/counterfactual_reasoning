@@ -1,0 +1,29 @@
+[
+    {
+      "id": 10,
+      "variable_mapping": {
+        "A": "work_stress",
+        "B": "coffee_intake",
+        "C": "sleep_hours",
+        "D": "morning_tiredness"
+      },
+      "edge_pairs": [
+        ["B", "C"],
+        ["C", "D"]
+      ],
+      "bidirected_pairs": [
+        ["A", "B"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "Lucy had a stressful week at work, and at the same time she drank more coffee; both were driven by the same upcoming deadline. Because she drank more coffee, Lucy slept fewer hours. Because she slept fewer hours, she felt tired the next morning.",
+      "V": "B",
+      "Q": "Given the above text, generate the text that would have been had Lucy not drunk more coffee. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(B = b') = t' | T = t)",
+      "S": "Lucy had a stressful week at work, and at the same time she avoided drinking more coffee; both were driven by the same upcoming deadline. Because she did not drink more coffee, Lucy slept her usual hours. Because she slept her usual hours, she did not feel tired the next morning.",
+      "S_prime": "Lucy had a stressful week at work, and at the same time she avoided drinking more coffee; however, both were still influenced by the same upcoming deadline. Because she did not drink more coffee, Lucy slept her usual hours. But even because she slept enough hours, she still felt tired the next morning due to the mental exhaustion from the work stress.",
+      "error_type": "III",
+      "comment": "Type III: The LLM introduces a new causal mechanism (stress -> tiredness) to keep D negative, even though the story’s causal structure attributes tiredness only to sleep hours downstream of coffee.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

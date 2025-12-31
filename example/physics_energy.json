@@ -1,0 +1,33 @@
+[
+    {
+      "id": 14,
+      "variable_mapping": {
+        "A": "heater_setting",
+        "B": "air_dryness",
+        "C": "room_warmup_rate",
+        "D": "evaporation_rate",
+        "E": "comfort_level",
+        "F": "heater_turned_off_early"
+      },
+      "edge_pairs": [
+        ["A", "C"],
+        ["B", "D"],
+        ["D", "E"],
+        ["E", "F"]
+      ],
+      "bidirected_pairs": [
+        ["A", "B"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "Lucy ran a space heater on a high setting, and at the same time the room’s air was very dry; both were driven by the same cold winter weather. Because the heater ran on high, the room warmed up quickly. Because the air was very dry, moisture evaporated faster, so the room felt less comfortable. Even though the room got warm, Lucy still turned the heater off early because the dryness made her uncomfortable.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had Lucy not run the space heater on a high setting. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(A = a') = t' | T = t)",
+      "S": "Lucy ran a space heater on a low setting, and at the same time the room’s air was very dry; both were driven by the same cold winter weather. Because the heater ran on low, the room warmed up slowly. Because the air was very dry, moisture still evaporated faster, so the room still felt less comfortable. Even though the room warmed more slowly, Lucy still turned the heater off early because the dryness made her uncomfortable.",
+      "S_prime": "Lucy ran a space heater on a low setting, and at the same time the room’s air was very dry; both were driven by the same cold winter weather. Because the heater ran on low, the room warmed up slowly. Because the air was very dry, moisture evaporated more gradually, so the room remained more comfortable. Since the room warmed up without the intense dryness, Lucy kept the heater on for much longer.",
+      "error_type": "III",
+      "comment": "Type III: The LLM changes the downstream mechanism of B by rewriting the dry-air effect from 'moisture evaporated faster' to 'evaporated more gradually' (and flips comfort), introducing an extra dependency on heater setting not represented in the causal structure.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

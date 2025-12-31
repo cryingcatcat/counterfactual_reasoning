@@ -1,0 +1,31 @@
+[
+  {
+    "id": 4,
+    "variable_mapping": {
+      "A": "printer_jam",
+      "B": "handouts_available",
+      "C": "traffic_congestion",
+      "D": "arrival_time",
+      "E": "brand_satisfaction",
+      "F": "rehearsal_quality"
+    },
+    "edge_pairs": [
+      ["A", "B"],
+      ["B", "E"],
+      ["C", "D"],
+      ["D", "E"],
+      ["F", "E"]
+    ],
+    "bidirected_pairs": [],
+    "causal_graph_type": "custom",
+    "T": "Lucy practiced her presentation the night before, so she spoke clearly in the meeting. That morning her printer jammed, so the handouts were missing. Separately, traffic was heavy so she arrived late, and Brand was annoyed despite the clear talk.",
+    "V": "C",
+    "Q": "Given the above text, generate the text that would have been had traffic been light. Keep the same format and roughly the same length.",
+    "M": "Output t' with P(T_(C = c') = t' | T = t)",
+    "S": "Lucy practiced her presentation the night before, so she spoke clearly in the meeting. That morning her printer jammed, so the handouts were missing. Separately, traffic was light so she arrived on time, but Brand was still annoyed about the missing handouts.",
+    "S_prime": "Lucy practiced her presentation the night before, so she spoke clearly in the meeting. That morning, since traffic was light, she got to the office early, fixed the printer, and brought printed handouts. She arrived on time and Brand was pleased.",
+    "error_type": "III",
+    "comment": "Type III: The LLM changes A/B by adding 'she fixed the printer and brought printed handouts' due to a narrative association with arriving early, even though the intervention is only on C (traffic) and A/B are not downstream of C in the causal diagram.",
+    "model": ["gemini-3-fast"]
+  }
+]

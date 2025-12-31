@@ -1,0 +1,32 @@
+[
+    {
+      "id": 11,
+      "variable_mapping": {
+        "A": "ankle_twist",
+        "B": "compression_bandage_used",
+        "C": "swelling_level",
+        "D": "ankle_elevation",
+        "E": "throbbing_pain",
+        "F": "ability_to_walk_home"
+      },
+      "edge_pairs": [
+        ["A", "C"],
+        ["B", "C"],
+        ["D", "E"],
+        ["C", "F"],
+        ["E", "F"]
+      ],
+      "bidirected_pairs": [],
+      "causal_graph_type": "custom",
+      "T": "Lucy twisted her ankle while jogging, so it started swelling. She immediately wrapped it with a compression bandage, which reduced the swelling. Separately, Brand reminded her to elevate her ankle on a pillow, which reduced the throbbing pain. Because the swelling and pain were reduced, Lucy was able to walk carefully back home.",
+      "V": "B",
+      "Q": "Given the above text, generate the text that would have been had Lucy not wrapped her ankle with a compression bandage. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(B = b') = t' | T = t)",
+      "S": "Lucy twisted her ankle while jogging, so it started swelling. She did not wrap it with a compression bandage, which allowed the swelling to increase. Separately, Brand reminded her to elevate her ankle on a pillow, which reduced the throbbing pain. Because the swelling persisted despite the pain being reduced, Lucy struggled to walk carefully back home.",
+      "S_prime": "Lucy did not twist her ankle while jogging, so it did not start swelling. She did not wrap it with a compression bandage, and there was no swelling to reduce. Separately, Brand reminded her to elevate her ankle on a pillow, which reduced the throbbing pain. Because the swelling and pain were reduced, Lucy was able to walk carefully back home.",
+      "error_type": "II",
+      "comment": "Type II: The output changes the upstream cause A by removing the ankle twist to justify the no-swelling outcome, even though the intervention is only on B (compression bandage use).",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

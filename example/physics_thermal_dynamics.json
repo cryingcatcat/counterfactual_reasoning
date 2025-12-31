@@ -1,0 +1,34 @@
+[
+    {
+      "id": 17,
+      "variable_mapping": {
+        "A": "compression_rate",
+        "B": "gas_temperature",
+        "C": "insulation_level",
+        "D": "heat_transfer_to_surroundings",
+        "E": "gas_pressure",
+        "F": "piston_locked",
+        "G": "cooling_after_lock"
+      },
+      "edge_pairs": [
+        ["A", "B"],
+        ["C", "D"],
+        ["B", "E"],
+        ["D", "B"],
+        ["F", "G"],
+        ["D", "G"]
+      ],
+      "bidirected_pairs": [],
+      "causal_graph_type": "custom",
+      "T": "Lucy sealed a gas in a cylinder with a movable piston and compressed it quickly, so the gas temperature rose due to near-adiabatic heating. Separately, Brand wrapped the cylinder in thick insulation, which reduced heat transfer to the surroundings. Because the compression was fast and insulation limited heat loss, the gas pressure increased sharply. After a short wait, the piston was locked in place, and the gas slowly cooled toward room temperature only through small residual heat leakage.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had Lucy compressed the gas slowly instead of quickly. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(A = a') = t' | T = t)",
+      "S": "Lucy sealed a gas in a cylinder with a movable piston and compressed it slowly, so the gas temperature rose less abruptly because there was more time for limited heat exchange. Separately, Brand wrapped the cylinder in thick insulation, which reduced heat transfer to the surroundings. Because the compression was slow but insulation still limited heat loss, the gas pressure increased more gradually. After a short wait, the piston was locked in place, and the gas still slowly cooled toward room temperature only through small residual heat leakage.",
+      "S_prime": "Lucy sealed a gas in a cylinder with a movable piston and compressed it slowly, so the gas temperature remained stable as heat had time to dissipate. Separately, Brand wrapped the cylinder in thick insulation, which reduced heat transfer to the surroundings. Because the compression was slow even though insulation limited heat loss, the gas pressure increased gradually. After a short wait, the piston was locked in place, and the gas stayed at a steady temperature without needing to cool through residual heat leakage.",
+      "error_type": "I",
+      "comment": "Type I: The LLM changes A to 'compressed slowly' but then assumes substantial heat dissipation and no subsequent cooling, missing the downstream constraint from C (insulation) that heat transfer is limited and residual cooling should still occur.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

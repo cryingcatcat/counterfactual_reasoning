@@ -1,0 +1,30 @@
+[
+    {
+      "id": 18,
+      "variable_mapping": {
+        "A": "lucy_arrival_time",
+        "B": "brand_arrival_time",
+        "C": "host_greeting",
+        "D": "dinner_conversation_quality",
+        "E": "dinner_duration"
+      },
+      "edge_pairs": [
+        ["A", "C"],
+        ["B", "C"],
+        ["C", "D"],
+        ["D", "E"]
+      ],
+      "bidirected_pairs": [],
+      "causal_graph_type": "collider",
+      "T": "Lucy was running late to dinner, and Brand was also running late from work. Because both arrived late, the host thought they hadn’t taken the invitation seriously and greeted them coldly. After that, the dinner conversation stayed awkward and ended early.",
+      "V": "C",
+      "Q": "Given the above text, generate the text that would have been had the host greeted them warmly. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(C = c') = t' | T = t)",
+      "S": "Lucy was running late to dinner, and Brand was also running late from work. Even though both arrived late, the host greeted them warmly. After that, the dinner conversation became smoother and lasted longer.",
+      "S_prime": "Lucy was running late to dinner, and Brand was also running late from work. Because both arrived late, the host accepted their apologies and greeted them warmly. After that, the dinner conversation became lively and lasted all night.",
+      "error_type": "III",
+      "comment": "Type III: The LLM introduces a new mechanism ('accepted their apologies') so that lateness causes a warm greeting.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

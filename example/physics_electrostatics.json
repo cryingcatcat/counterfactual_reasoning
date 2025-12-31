@@ -1,0 +1,32 @@
+[
+    {
+      "id": 13,
+      "variable_mapping": {
+        "A": "wool_sweater",
+        "B": "air_dryness",
+        "C": "charge_leak_rate",
+        "D": "static_charge_buildup",
+        "E": "shock_intensity"
+      },
+      "edge_pairs": [
+        ["B", "C"],
+        ["A", "D"],
+        ["C", "E"],
+        ["D", "E"]
+      ],
+      "bidirected_pairs": [
+        ["A", "B"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "Lucy wore a wool sweater, and at the same time the room air was very dry; both were driven by the same cold winter weather. Because the air was dry, static charge leaked away slowly. Because Lucy wore wool, she built up a large static charge when she walked across the carpet. With charge building up and not leaking away, Lucy got a strong shock when she touched the metal doorknob.",
+      "V": "B",
+      "Q": "Given the above text, generate the text that would have been had the room air not been very dry. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(B = b') = t' | T = t)",
+      "S": "Lucy wore a wool sweater, and at the same time the room air was quite humid, even though it was cold winter weather. Because the air was humid, static charge leaked away quickly. Because Lucy wore wool, she built up static charge when she walked across the carpet, but with the charge leaking away, Lucy only felt a small spark when she touched the metal doorknob.",
+      "S_prime": "Lucy wore a wool sweater, and at the same time the room air was quite humid; however, these were influenced by different environmental factors. Because the air was humid, static charge leaked away quickly. Because Lucy wore wool, she built up a large static charge when she walked across the carpet, but because the charge was constantly leaking away, Lucy barely felt a spark when she touched the metal doorknob.",
+      "error_type": "II",
+      "comment": "Type II: The LLM changes the bidirected relation (A <---> B) by rewriting 'both were driven by the same cold winter weather' into 'influenced by different environmental factors', even though the intervention is only on B.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

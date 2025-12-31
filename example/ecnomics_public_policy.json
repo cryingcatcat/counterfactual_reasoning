@@ -1,0 +1,34 @@
+[
+    {
+      "id": 6,
+      "variable_mapping": {
+        "A": "congestion_charge",
+        "B": "downtown_car_volume",
+        "C": "average_traffic_speed",
+        "D": "bus_travel_time",
+        "E": "flexible_work_hours",
+        "F": "commute_time_spread",
+        "G": "bus_ridership"
+      },
+      "edge_pairs": [
+        ["A", "B"],
+        ["B", "C"],
+        ["C", "D"],
+        ["E", "F"],
+        ["F", "B"],
+        ["D", "G"]
+      ],
+      "bidirected_pairs": [],
+      "causal_graph_type": "custom",
+      "T": "A city introduced a congestion charge, so fewer cars drove into downtown during rush hour. With fewer cars, average traffic speed increased and bus travel times became shorter. Separately, Brand’s employer started flexible work hours, which spread commuting across the morning. Because buses were faster and commuting was more spread out, more riders chose the bus that month.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had the city not introduced the congestion charge. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(A = a') = t' | T = t)",
+      "S": "A city did not introduce a congestion charge, so more cars drove into downtown during rush hour. With more cars, average traffic speed was lower and bus travel times were longer. Separately, Brand’s employer started flexible work hours, which spread commuting across the morning and slightly reduced the rush-hour crush. Because buses were still slower but congestion was somewhat spread out, bus ridership stayed similar or fell only slightly that month.",
+      "S_prime": "A city did not introduce a congestion charge, so car volume remained high into downtown during rush hour. With the same number of cars, average traffic speed stayed low and bus travel times remained long. Separately, Brand’s employer started flexible work hours, which spread commuting across the morning. Because buses were still slow despite commuting being more spread out, fewer riders chose the bus that month.",
+      "error_type": "I",
+      "comment": "Type I: The output keeps the flexible-hours pathway present (E -> F) but fails to propagate its downstream effect on car volume/congestion (F -> B) and the resulting bus outcomes, effectively treating the spread-out commuting as having no impact on rush-hour conditions.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

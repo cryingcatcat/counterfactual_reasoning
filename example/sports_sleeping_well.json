@@ -1,0 +1,36 @@
+[
+    {
+      "id": 25,
+      "variable_mapping": {
+        "A": "lucy_sleep_quality",
+        "B": "lucy_reaction_time",
+        "C": "brands_team_strategy_aggressiveness",
+        "D": "scoring_chances_for_brands_team",
+        "E": "early_goal_by_brands_team",
+        "F": "lucy_key_block",
+        "G": "lucy_confidence_level",
+        "H": "match_outcome"
+      },
+      "edge_pairs": [
+        ["A", "B"],
+        ["B", "F"],
+        ["C", "D"],
+        ["D", "E"],
+        ["E", "G"],
+        ["F", "G"],
+        ["G", "H"]
+      ],
+      "bidirected_pairs": [],
+      "causal_graph_type": "custom",
+      "T": "Before the match, Lucy slept poorly, so her reaction time was slower during the first half. Separately, Brand’s team changed to a more aggressive strategy, which created more scoring chances. Because Lucy reacted slowly, she missed a key block, and because the strategy created chances, Brand’s team scored early. After falling behind, Lucy played more cautiously, and her team lost the match.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had Lucy slept well before the match. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(A = a') = t' | T = t)",
+      "S": "Before the match, Lucy slept well, so her reaction time was sharper during the first half. Separately, Brand’s team changed to a more aggressive strategy, which created more scoring chances. Because Lucy reacted quickly, she made a key block, but because the strategy created chances, Brand’s team still scored early. After falling behind, Lucy played more confidently and kept fighting, but her team still lost the match.",
+      "S_prime": "Before the match, Lucy slept well, so her reaction time was sharp during the first half. Separately, Brand’s team changed to a more aggressive strategy, which created more scoring chances. Because Lucy reacted quickly, she made a key block, and even though the strategy created chances, Brand’s team struggled to score early. After keeping the game tied, Lucy played more confidently, and her team won the match.",
+      "error_type": "I",
+      "comment": "Type I: The LLM keeps C -> D (aggressive strategy creates more scoring chances) but removes the downstream consequence E (Brand’s team scoring early) by changing it to 'struggled to score early', missing a required downstream change implied by D -> E.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

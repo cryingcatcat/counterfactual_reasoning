@@ -1,0 +1,41 @@
+[
+    {
+      "id": 7,
+      "variable_mapping": {
+        "A": "strike",
+        "B": "imported_avocado_supply",
+        "C": "viral_avocado_trend",
+        "D": "avocado_demand",
+        "E": "diesel_price",
+        "F": "trucking_cost",
+        "H": "wholesale_avocado_price",
+        "I": "retail_avocado_price",
+        "J": "quantity_purchased"
+      },
+      "edge_pairs": [
+        ["A", "B"],
+        ["C", "D"],
+        ["E", "F"],
+        ["B", "H"],
+        ["D", "H"],
+        ["F", "I"],
+        ["H", "I"],
+        ["I", "J"]
+      ],
+      "bidirected_pairs": [
+        ["B", "D"],
+        ["D", "E"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "A strike delayed imported avocados, so grocery stores had much less supply. At the same time, a viral avocado trend increased the demand, and diesel prices were high, raising trucking costs. Because the strike-driven shortage was the main reason, wholesale avocado prices spiked and retailers doubled shelf prices; customers bought fewer avocados and some stores rationed purchases.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had the strike not happened.",
+      "M": "Output t' with P(T_(A =a') = t' | T = t)",
+      "S": "There was no strike delaying imported avocados, so grocery stores had normal supply. At the same time, a viral avocado trend increased the demand, and diesel prices were high, raising trucking costs. Without the strike-driven shortage as the main reason, wholesale avocado prices rose only slightly and retailers increased shelf prices modestly; customers still bought avocados and stores did not ration purchases.",
+      "S_prime": "Shipments arrived as scheduled, so grocery stores had plenty of supply. At the same time, the viral avocado trend faded and diesel prices were low, reducing trucking costs. Because demand was weak and logistics were cheap, wholesale avocado prices fell and retailers cut shelf prices; customers bought more avocados and stores remained well-stocked for everyone.",
+      "error_type": "III",
+      "comment": "The LLM changes C by rewriting 'viral avocado trend increased the demand' into 'the viral avocado trend faded' and changes E by rewriting 'diesel prices were high' into 'diesel prices were low', even though the intervention is only about removing A (the strike).",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

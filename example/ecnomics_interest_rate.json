@@ -1,0 +1,40 @@
+[
+    {
+      "id": 5,
+      "variable_mapping": {
+        "A": "interest_rate_hike",
+        "B": "mortgage_rate_level",
+        "C": "borrowing_cost_affordability",
+        "D": "remote_work_policy",
+        "E": "homebuyer_purchase_activity",
+        "F": "home_prices",
+        "G": "rents",
+        "H": "household_budget_tightness",
+        "I": "weekday_lunch_sales"
+      },
+      "edge_pairs": [
+        ["A", "B"],
+        ["B", "C"],
+        ["C", "E"],
+        ["D", "E"],
+        ["E", "F"],
+        ["D", "F"],
+        ["F", "G"],
+        ["C", "H"],
+        ["G", "H"],
+        ["H", "I"]
+      ],
+      "bidirected_pairs": [],
+      "causal_graph_type": "custom",
+      "T": "A central bank unexpectedly raised interest rates, so mortgage rates increased and monthly payments on new loans became more expensive. At the same time, a new remote-work policy at a large employer increased local demand for housing in the city. Because borrowing costs rose, some buyers delayed purchases, but because demand also rose, home prices still increased and rents rose slightly. Local restaurants saw a small drop in weekday lunch sales as households tightened budgets.",
+      "V": "A",
+      "Q": "Given the above text, generate the text that would have been had the central bank not raised interest rates. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(A = a') = t' | T = t)",
+      "S": "The central bank did not raise interest rates, so mortgage rates remained stable and monthly payments on new loans stayed more affordable. At the same time, a new remote-work policy at a large employer increased local demand for housing in the city. With borrowing costs staying low, more buyers went ahead with purchases, so home prices rose more and rents increased, which still tightened some household budgets. Local restaurants still saw a small drop in weekday lunch sales as higher rents and other costs squeezed spending.",
+      "S_prime": "A central bank maintained current interest rates, so mortgage rates remained stable and monthly payments on new loans stayed affordable. At the same time, a new remote-work policy at a large employer increased local demand for housing in the city. Because borrowing costs remained low, more buyers rushed to make purchases, and because demand also rose, home prices surged significantly and rents rose sharply. Local restaurants saw a notable boost in weekday lunch sales as households felt more financially confident.",
+      "error_type": "I",
+      "comment": "Type I: The output makes rents rise sharply (G) yet flips household spending and weekday lunch sales (I) to a notable boost, missing the downstream budget-tightening effect implied by higher rents/costs (G -> H -> I).",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

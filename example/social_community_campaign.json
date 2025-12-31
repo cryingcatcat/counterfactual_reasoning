@@ -1,0 +1,37 @@
+[
+    {
+      "id": 19,
+      "variable_mapping": {
+        "A": "community_campaign_strength",
+        "B": "event_planned_outdoors",
+        "C": "local_news_promotion",
+        "D": "light_rain",
+        "E": "seating_comfort",
+        "F": "early_departures",
+        "G": "attendee_arrivals",
+        "H": "crowdedness_over_time"
+      },
+      "edge_pairs": [
+        ["B", "E"],
+        ["D", "E"],
+        ["E", "F"],
+        ["C", "G"],
+        ["G", "H"],
+        ["F", "H"]
+      ],
+      "bidirected_pairs": [
+        ["B", "C"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "Lucy planned an outdoor charity meetup, and at the same time a local news station heavily promoted the event; both were driven by the same high-profile community campaign. Because the meetup was outdoors, light rain made the seating uncomfortable and some people left early. Because the news promotion was heavy, more attendees showed up than expected. With more people arriving but some leaving early due to the rain, the event felt crowded at first and then thinned out quickly.",
+      "V": "C",
+      "Q": "Given the above text, generate the text that would have been had there been no local news promotion of the event. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(C = c') = t' | T = t)",
+      "S": "Lucy planned an outdoor charity meetup, and at the same time a local news station did not promote the event; both were driven by the same high-profile community campaign. Because the meetup was outdoors, light rain made the seating uncomfortable and some people left early. Because the news promotion was absent, fewer attendees showed up than expected. With fewer people arriving and some leaving early due to the rain, the event felt sparse at first and then the park was nearly empty quickly.",
+      "S_prime": "Lucy planned an outdoor charity meetup, and the community campaign never really took off, so the local news station did not promote the event; consequently, the turnout relied solely on word of mouth. Because the meetup was outdoors, light rain made the seating uncomfortable and some people left early. Because the news promotion was absent, fewer attendees showed up than expected. With fewer people arriving and some leaving early due to the rain, the event felt sparse at first and then the park was nearly empty quickly.",
+      "error_type": "II",
+      "comment": "Type II: The LLM changes the upstream common-cause assumption by rewriting the 'high-profile community campaign' into 'the campaign never really took off' to justify the lack of news promotion, even though the intervention is only on C (no local news promotion).",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

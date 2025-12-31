@@ -1,0 +1,34 @@
+[
+  {
+    "id": 16,
+    "variable_mapping": {
+      "A": "ramp_angle",
+      "B": "gravity_component_along_ramp",
+      "C": "normal_force",
+      "D": "friction_force",
+      "E": "acceleration_down_ramp",
+      "F": "initial_push",
+      "G": "time_to_reach_bottom"
+    },
+    "edge_pairs": [
+      ["A", "B"],
+      ["A", "C"],
+      ["C", "D"],
+      ["B", "E"],
+      ["D", "E"],
+      ["F", "E"],
+      ["E", "G"]
+    ],
+    "bidirected_pairs": [],
+    "causal_graph_type": "custom",
+    "T": "The ramp was set at a steep angle, so the component of gravity along the ramp was large and the normal force was small (because FN = mg cosθ, and cosθ decreases as the angle increases). That produced a small friction force (because Ff = μFN), and with an extra initial push the cart accelerated quickly and reached the bottom in a short time.",
+    "V": "D",
+    "Q": "Given the above text, generate the text that would have been had the friction force been large.",
+    "M": "Output t' with P(T_(D = d') = t' | T = t)",
+    "S": "The ramp was set at a steep angle, so the component of gravity along the ramp was large and the normal force was small (because FN = mg cosθ, and cosθ decreases as the angle increases). That produced a large friction force (because Ff = μFN), and with an extra initial push the cart accelerated slowly and reached the bottom in a long time.",
+    "S_prime": "The ramp was set at a shallow angle, so the component of gravity along the ramp was small and the normal force was large (because FN = mg cosθ, and cosθ increases as the angle decreases). That produced a large friction force (because Ff = μFN), and despite an extra initial push, the cart accelerated slowly and reached the bottom in a long time.",
+    "error_type": "II",
+    "comment": "Type II: The LLM changes A by rewriting 'the ramp was set at a steep angle' into 'the ramp was set at a shallow angle' to justify the large-friction outcome.",
+    "model": ["gemini-3-fast"]
+  }
+]

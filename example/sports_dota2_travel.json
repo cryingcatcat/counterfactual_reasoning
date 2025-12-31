@@ -1,0 +1,36 @@
+[
+    {
+      "id": 24,
+      "variable_mapping": {
+        "A": "poor_sleep_from_travel",
+        "B": "skipped_replay_review",
+        "C": "reaction_time_in_early_fights",
+        "D": "draft_teamfight_combo_strength",
+        "E": "timing_window_execution",
+        "F": "early_skirmish_results",
+        "G": "net_worth_at_10_minutes"
+      },
+      "edge_pairs": [
+        ["A", "C"],
+        ["B", "D"],
+        ["D", "E"],
+        ["C", "F"],
+        ["E", "F"],
+        ["F", "G"]
+      ],
+      "bidirected_pairs": [
+        ["A", "B"]
+      ],
+      "causal_graph_type": "custom",
+      "T": "Before the draft, Lucy’s team had poor sleep from traveling, and at the same time they skipped their usual replay review; both were driven by the same tight tournament schedule. Because they slept poorly, Lucy’s reaction time was slower in early fights. Because they skipped replay review, their draft left them with a weaker teamfight combo and they missed key timing windows. With slower reactions and weaker timings, Lucy’s team lost two early skirmishes and fell behind in net worth by 10 minutes.",
+      "V": "B",
+      "Q": "Given the above text, generate the text that would have been had Lucy’s team not skipped their usual replay review. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(B = b') = t' | T = t)",
+      "S": "Before the draft, Lucy’s team had poor sleep from traveling, and at the same time they conducted their usual replay review; both were driven by the same tight tournament schedule. Because they slept poorly, Lucy’s reaction time was slower in early fights. Because they completed the replay review, their draft gave them a stronger teamfight combo and they hit key timing windows. With slower reactions but better timings, Lucy’s team traded kills more evenly early and kept the net worth close at 10 minutes.",
+      "S_prime": "Before the draft, Lucy’s team had poor sleep from traveling, and at the same time they conducted their usual replay review; however, these were influenced by different time constraints during the tight tournament schedule. Because they slept poorly, Lucy’s reaction time was slower in early fights. Because they completed the replay review, their draft gave them a stronger teamfight combo and they hit key timing windows. With slower reactions but better timings, Lucy’s team traded kills evenly in early skirmishes and kept the net worth equal at 10 minutes.",
+      "error_type": "II",
+      "comment": "Type II: The LLM changes the bidirected relation (A <---> B) by rewriting 'both were driven by the same tight tournament schedule' into 'influenced by different time constraints', even though the intervention is only on B.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  

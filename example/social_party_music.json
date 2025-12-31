@@ -1,0 +1,32 @@
+[
+    {
+      "id": 20,
+      "variable_mapping": {
+        "A": "party_hosted",
+        "B": "music_loudness",
+        "C": "neighbor_complaint",
+        "D": "manager_intervention",
+        "E": "party_atmosphere",
+        "F": "guest_stay_duration"
+      },
+      "edge_pairs": [
+        ["A", "B"],
+        ["B", "C"],
+        ["C", "D"],
+        ["D", "E"],
+        ["E", "F"]
+      ],
+      "bidirected_pairs": [],
+      "causal_graph_type": "custom",
+      "T": "Lucy hosted a small party, so she bought snacks and played loud music. Because the music was loud, Brand’s neighbor complained, and the building manager asked Lucy to turn the volume down. After she turned it down, the party became calmer and most guests stayed until midnight.",
+      "V": "B",
+      "Q": "Given the above text, generate the text that would have been had the music not been loud. Keep the same format and roughly the same length, and change only what is necessary.",
+      "M": "Output t' with P(T_(B = b') = t' | T = t)",
+      "S": "Lucy hosted a small party, so she bought snacks and played quiet music. Because the music was quiet, Brand’s neighbor did not complain, and the building manager left Lucy and her guests undisturbed. Because the atmosphere stayed relaxed, most guests stayed until midnight.",
+      "S_prime": "Lucy hosted a small party, so she bought snacks and played quiet music. Because the music was quiet, Brand’s neighbor complained, and the building manager asked Lucy to turn the volume down. After she turned it down, the party became calmer and most guests stayed until midnight.",
+      "error_type": "I",
+      "comment": "Type I: The LLM changes B to 'quiet music' but keeps downstream variables C/D unchanged (complaint and manager intervention), missing required downstream changes implied by B -> C -> D.",
+      "model": ["gemini-3-fast"]
+    }
+  ]
+  
