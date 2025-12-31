@@ -6,6 +6,9 @@ on:
       - 'example/**'  # 只有当 example 文件夹下的文件变化时才触发
   workflow_dispatch:   # 允许手动触发
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,7 +31,19 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add src/data/manifest.json
-          # 只有在文件确实有变化时才提交
-          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-update manifest.json"
+
+          # Stage generated outputs. If only example content changes (filenames unchanged),
+          # manifest.json may not change but reports/*.html will.
+          git add -A src/data/manifest.json
+          if [ -d reports ]; then
+            git add -A reports
+          fi
+
+          # Only commit when there are staged changes (avoid failing with "nothing to commit").
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: auto-update generated files"
           git push
